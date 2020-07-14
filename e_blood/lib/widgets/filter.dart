@@ -42,18 +42,6 @@ class _FilterSearchState extends State<FilterSearch> {
     final deviceSize = MediaQuery.of(context).size;
     return Container(
       height: deviceSize.height * 0.10,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(20.0),
-          bottomRight: Radius.circular(20.0),
-        ),
-        border: Border(
-          bottom: BorderSide(
-            color: Colors.black,
-            width: 1.0,
-          ),
-        ),
-      ),
       child: Row(
         children: <Widget>[
           Container(
@@ -68,18 +56,21 @@ class _FilterSearchState extends State<FilterSearch> {
                 hint: Text(
                   'Blood Group ',
                   style: TextStyle(
-                      fontSize: 12.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
+                    fontSize: 12.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
                 value: _currentSugars,
                 items: bloodGroupsList.map((bloodType) {
                   return DropdownMenuItem(
                     value: bloodType,
-                    child: Text(bloodType,
-                        style: TextStyle(
-                          fontSize: 15.0,
-                        )),
+                    child: Text(
+                      bloodType,
+                      style: TextStyle(
+                        fontSize: 15.0,
+                      ),
+                    ),
                   );
                 }).toList(),
                 onChanged: (val) => setState(() => _currentSugars = val),
@@ -90,16 +81,17 @@ class _FilterSearchState extends State<FilterSearch> {
             height: deviceSize.height * 0.089,
             width: deviceSize.width * 0.5,
             child: TextFormField(
-                decoration: textInputDecoration,
-                cursorColor: Colors.white,
-                onTap: () async {
-                  Prediction p = await PlacesAutocomplete.show(
-                      context: context,
-                      apiKey: kGoogleApiKey,
-                      mode: Mode.overlay, // Mode.fullscreen
-                      language: "fr",
-                      components: [new Component(Component.country, "fr")]);
-                }),
+              decoration: textInputDecoration,
+              cursorColor: Colors.white,
+              onTap: () async {
+                Prediction p = await PlacesAutocomplete.show(
+                    context: context,
+                    apiKey: kGoogleApiKey,
+                    mode: Mode.overlay, // Mode.fullscreen
+                    language: "fr",
+                    components: [new Component(Component.country, "fr")]);
+              },
+            ),
           )
         ],
       ),

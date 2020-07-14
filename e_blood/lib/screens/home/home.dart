@@ -33,7 +33,9 @@ class _HomeState extends State<Home> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Profile()),
+                MaterialPageRoute(
+                  builder: (context) => Profile(),
+                ),
               );
             },
           )
@@ -44,11 +46,12 @@ class _HomeState extends State<Home> {
           DonorList(),
           Container(
             decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20.0),
-                  bottomRight: Radius.circular(20.0),
-                )),
+              // color: Colors.red,
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(20.0),
+                bottomRight: Radius.circular(20.0),
+              ),
+            ),
             child: FilterSearch(),
           ),
         ],
