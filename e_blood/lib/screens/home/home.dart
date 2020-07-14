@@ -41,7 +41,7 @@ class _HomeState extends State<Home> {
       ),
       body: Stack(
         children: <Widget>[
-          DonorWidget(),
+          DonorList(),
           Container(
             decoration: BoxDecoration(
                 color: Colors.white,
@@ -51,7 +51,6 @@ class _HomeState extends State<Home> {
                 )),
             child: FilterSearch(),
           ),
-        
         ],
       ),
     );
