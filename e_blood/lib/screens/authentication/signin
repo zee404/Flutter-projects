@@ -1,0 +1,225 @@
+ Scaffold(
+      resizeToAvoidBottomPadding: false,
+      backgroundColor: Colors.red[800],
+      body: SafeArea(
+        child: Container(
+          child: Column(
+            children: <Widget>[
+              Container(
+                height: 400,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/login1.png'),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+                child: Stack(
+                  children: <Widget>[
+                    //heart
+                    Positioned(
+                      top: 30.0,
+                      left: 10.0,
+                      width: 80.0,
+                      height: 80.0,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/heart.png'),
+                          ),
+                        ),
+                      ),
+                    ),
+                    // blooddrop
+                    Positioned(
+                      top: 130.0,
+                      left: 33.0,
+                      width: 35.0,
+                      height: 35.0,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/blood.png'),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 190.0,
+                      left: 35.0,
+                      width: 30.0,
+                      height: 30.0,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/blood.png'),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 240.0,
+                      left: 0.0,
+                      width: 90.0,
+                      height: 50.0,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/hand.png'),
+                          ),
+                        ),
+                      ),
+                    ),
+                    // main logo
+                    Positioned(
+                      top: height / 5 - 120,
+                      left: width / 2 - 150,
+                      width: 300.0,
+                      height: 300.0,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/mainlogo1.png'),
+                          ),
+                        ),
+                      ),
+                    ),
+                    //namelogo
+                    Positioned(
+                      top: height / 4 - 120,
+                      left: width / 2 - 150,
+                      width: 300.0,
+                      height: 300.0,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/bloodlogo.png'),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(30.0),
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Color.fromRGBO(143, 148, 251, .2),
+                                blurRadius: 20.0,
+                                offset: Offset(0, 10))
+                          ]),
+                      child: Column(
+                        children: <Widget>[
+                          Container(
+                            padding: EdgeInsets.all(8.0),
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom:
+                                        BorderSide(color: Colors.grey[100]))),
+                            child: Form(
+                              child: Column(
+                                children: <Widget>[
+                                  TextFormField(
+                                    controller: _phoneControler,
+                                    decoration: InputDecoration(
+                                        border: InputBorder.none,
+                                        hintText: "Enter Phone number",
+                                        hintStyle:
+                                            TextStyle(color: Colors.grey[400])),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    //  Container(
+                    //   height: 50,
+                    //   decoration: BoxDecoration(
+                    //     borderRadius: BorderRadius.circular(10),
+                    //     gradient: LinearGradient(
+                    //       colors: [
+                    //         Color.fromRGBO(143, 148, 251, 1),
+                    //         Color.fromRGBO(143, 148, 251, .6),
+                    //       ]
+                    //     )
+                    //   ),
+                    //   child: Center(
+                    //     child: FlatButton
+                    //     (onPressed: ()
+                    //      async {
+                    //       final phone= _phoneControler.text.trim();
+
+                    //      dynamic  result= await AuthService().signinWithPhone(phone, context);
+                    //      print(result);
+                    //       if (result !=null)
+                    //       {
+                    //         print(result);
+                    //         Navigator.push(
+                    //       context,
+                    //       MaterialPageRoute(builder: (context) => Home()),
+                    //       );
+
+                    //       }
+                    //     },
+                    //      child: Text(
+                    //        "Login",
+                    //        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                    //     ),
+                    //     ),
+                    //   ),
+                    // ),
+                    SizedBox(
+                      height: 70,
+                    ),
+                    Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          gradient: LinearGradient(colors: [
+                            Color.fromRGBO(143, 148, 251, 1),
+                            Color.fromRGBO(143, 148, 251, .6),
+                          ])),
+                      child: Center(
+                        child: FlatButton(
+                          onPressed: () async {
+                            dynamic result = await AuthService().signInAnom();
+                            print(result);
+                            if (result != null) {
+                              print(result);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Home()),
+                              );
+                            }
+                          },
+                          child: Text(
+                            "Sign in Anonmously",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -1,0 +1,47 @@
+InputDecoration(
+                                  labelText: 'BleedDate',
+                                  labelStyle: TextStyle(
+                                      color: Colors.black87,
+                                      fontSize: 20,
+                                      fontFamily: 'AvenirLight'),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.purple),
+                                  ),
+
+                                  enabledBorder: new UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.grey, width: 1.0)),
+                                  contentPadding: EdgeInsets.symmetric(
+                                    vertical: 5.0,
+                                    horizontal: 22.0,
+                                  ),
+                                  border: new OutlineInputBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(50),
+                                    ),
+                                  ),
+                                  // * DISPLAYING DATE
+                                  hintText: dateOfBirth == null
+                                      ? "Select a date of birth"
+                                      : formatDate(dateOfBirth,
+                                          [dd, '-', mm, '-', yyyy]),
+
+                                  hintStyle: TextStyle(
+                                    color: Colors.brown.withOpacity(0.8),
+                                    fontSize: 15,
+                                  ),
+
+                                  //
+                                  // >>>>>>>>> Calender Icon (Useless)
+                                  //
+                                  prefixIcon: IconButton(
+                                    color: Colors.black.withOpacity(0.5),
+                                    icon: Icon(
+                                      Icons.date_range,
+                                      size: 15,
+                                      color: Colors.brown.withOpacity(0.7),
+                                    ),
+                                    onPressed: () {},
+                                  ),
+                                ),

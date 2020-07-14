@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "782412949146",
+    "firebase_url": "https://eblood-67853.firebaseio.com",
+    "project_id": "eblood-67853",
+    "storage_bucket": "eblood-67853.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:782412949146:android:d50490f3252d99b133e123",
+        "android_client_info": {
+          "package_name": "com.example.e_blood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "782412949146-ikanrthjvb6t488g5kprjlvemimplr4a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApnGnHQf4uP5o2TYk6i0h85iWJh-lR8iY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "782412949146-ikanrthjvb6t488g5kprjlvemimplr4a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
