@@ -1,7 +1,7 @@
 import 'package:e_blood/screens/home/home.dart';
 import 'package:e_blood/screens/profile/profile.dart';
 import 'package:flutter/material.dart';
-import 'package:e_blood/screens/notification/notification.dart';
+import 'package:e_blood/screens/notification/NotificationScreen.dart';
 
 import 'home.dart';
 class HomeScreen extends StatefulWidget {
@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<Widget> pages = [
     Home(),
-    NotificationScreen(),
+   NotificationScreen(),
     Profile(),
     Profile(),
   ];
