@@ -35,7 +35,7 @@ class NotificationScreen extends StatelessWidget {
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 10),
-                  child: Text("Description: Urgent need of blood in Ayub medical college"),
+                  child: Text("Desdcription: Urgent need of blood in Ayub medical college"),
                 ),
                 Container(
                   margin: EdgeInsets.only(right: 10),
