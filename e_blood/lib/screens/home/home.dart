@@ -19,27 +19,25 @@ class _HomeState extends State<Home> {
     final screenSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
         backgroundColor: Colors.red,
+        leading: Container(),
+        title: Text(
+          'eblood',
+          style: TextStyle(
+            fontSize: 25.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
-        title: Text('eblood'),
-
-        // button on the app bar to nevigaet
-
-        actions: <Widget>[
-          FlatButton.icon(
-            label: Text(""),
-            icon: Icon(Icons.dehaze),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => Profile(),
-                ),
-              );
-            },
-          )
-        ],
+        bottom: PreferredSize(
+            child: Text(
+              "Profile",
+              style: TextStyle(
+                fontSize: 19.0,
+                color: Colors.white,
+              ),
+            ),
+            preferredSize: null),
       ),
       body: Stack(
         children: <Widget>[
