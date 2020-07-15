@@ -41,24 +41,42 @@ class _FilterSearchState extends State<FilterSearch> {
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
     return Container(
-      height: deviceSize.height * 0.10,
+      height: deviceSize.height * 0.09,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(10.0),
+          bottomRight: Radius.circular(10.0),
+          topLeft: Radius.circular(10.0),
+          topRight: Radius.circular(10.0),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: Offset(0, 3),
+          )
+        ],
+      ),
+      //  / color: Colors.white,
       child: Row(
         children: <Widget>[
           Container(
-            height: deviceSize.height * 0.089,
+            height: deviceSize.height * 0.085,
             width: deviceSize.width * 0.4,
             child: Padding(
               padding: const EdgeInsets.only(left: 10.0),
               child: DropdownButtonFormField(
                 iconSize: 25.0,
-                iconEnabledColor: Colors.white,
-                decoration: textInputDecoration,
+                iconEnabledColor: Colors.green,
+                decoration: textInputDecoration.copyWith(),
                 hint: Text(
                   'Blood Group ',
                   style: TextStyle(
-                    fontSize: 12.0,
+                    fontSize: 11.0,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: Colors.green,
                   ),
                 ),
                 value: _currentSugars,
@@ -77,11 +95,16 @@ class _FilterSearchState extends State<FilterSearch> {
               ),
             ),
           ),
+          SizedBox(
+            width: deviceSize.width * 0.07,
+          ),
           Container(
-            height: deviceSize.height * 0.089,
+            height: deviceSize.height * 0.085,
             width: deviceSize.width * 0.5,
             child: TextFormField(
-              decoration: textInputDecoration,
+              decoration: textInputDecoration.copyWith(
+                hintText: 'Enter City',
+              ),
               cursorColor: Colors.white,
               onTap: () async {
                 Prediction p = await PlacesAutocomplete.show(

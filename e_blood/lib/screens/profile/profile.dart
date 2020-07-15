@@ -9,6 +9,8 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  // variable Decleration ///////////////////
+
   DateTime dateOfBirth;
   final List<String> _bloodGroups = [
     'All',
@@ -27,6 +29,18 @@ class _ProfileState extends State<Profile> {
   String _bleedDat = 'o+';
   bool _edit = false;
 
+  //chanig app bar color and text dynamically ///
+  Color appbarBGColor = Colors.red;
+  Color appBarForegroundColor = Colors.white;
+  String titleText = 'Profile';
+  void changeappabar() {
+    setState(() {
+      appbarBGColor = Colors.white;
+      appBarForegroundColor = Colors.blue;
+      titleText = 'Edit Profile';
+    });
+  }
+
   Future _selectDate() async {
     DateTime picked = await showDatePicker(
         context: context,
@@ -38,28 +52,34 @@ class _ProfileState extends State<Profile> {
   }
 
   final _formkey = GlobalKey<FormState>();
+
+  //// decleration ends here /////////////////////
+
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red,
-        title: Center(child: Text('eblood')),
-
-        // button on the app bar to nevagite
-
-        // actions: <Widget>[
-        //   FlatButton.icon(
-        //     icon: Icon(Icons.home),
-        //     label: Text("Home"),
-        //     onPressed: () {
-        //       Navigator.push(
-        //         context,
-        //         MaterialPageRoute(builder: (context) => Home()),
-        //       );
-        //     },
-        //   )
-        // ],
+        backgroundColor: appbarBGColor,
+        leading: Container(),
+        title: Text(
+          'eblood',
+          style: TextStyle(
+            fontSize: 25.0,
+            fontWeight: FontWeight.bold,
+            color: appBarForegroundColor,
+          ),
+        ),
+        centerTitle: true,
+        bottom: PreferredSize(
+            child: Text(
+              titleText,
+              style: TextStyle(
+                fontSize: 19.0,
+                color: appBarForegroundColor,
+              ),
+            ),
+            preferredSize: null),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -198,6 +218,7 @@ class _ProfileState extends State<Profile> {
                       onPressed: () {
                         setState(() {
                           _edit = true;
+                          changeappabar();
                         });
                       },
                       color: Colors.red,
@@ -228,7 +249,7 @@ class _ProfileState extends State<Profile> {
                       color: Colors.green,
                       textColor: Colors.white,
                       child: Text(
-                        'Update Info ',
+                        'Save Info ',
                         style: TextStyle(
                           fontSize: 15.0,
                           fontWeight: FontWeight.bold,

@@ -149,6 +149,7 @@ class NotificationWidget extends StatelessWidget {
                   child: Icon(
                     Icons.phone,
                     color: Colors.green,
+                    size: deviceSize.height * 0.03,
                   ),
                 ),
                 SizedBox(width: deviceSize.width * 0.07),
@@ -165,6 +166,7 @@ class NotificationWidget extends StatelessWidget {
                   child: Icon(
                     Icons.message,
                     color: Colors.green,
+                    size: deviceSize.height * 0.03,
                   ),
                 ),
                 SizedBox(width: deviceSize.width * 0.04),

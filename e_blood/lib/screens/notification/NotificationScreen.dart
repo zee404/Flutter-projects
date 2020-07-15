@@ -14,22 +14,25 @@ class _NotificationScreenState extends State<NotificationScreen> {
     final screenSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
         backgroundColor: Colors.red,
-        leading: Container(
-            width: screenSize.width * 0.3,
-            child: Text(
-              'eblood',
-              style: TextStyle(
-                fontSize: 20.0,
-              ),
-            )),
+        leading: Container(),
         title: Text(
-          'Notification',
-          style: TextStyle(fontSize: 15.0),
+          'eblood',
+          style: TextStyle(
+            fontSize: 25.0,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         centerTitle: true,
-        // button on the app bar to nevigaet
+        bottom: PreferredSize(
+            child: Text(
+              "Notifications",
+              style: TextStyle(
+                fontSize: 19.0,
+                color: Colors.white,
+              ),
+            ),
+            preferredSize: null),
       ),
       body: NotificationList(),
     );
