@@ -2,8 +2,9 @@ import 'package:e_blood/screens/home/home.dart';
 import 'package:e_blood/screens/profile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:e_blood/screens/notification/NotificationScreen.dart';
-
+import 'package:e_blood/screens/postRequest/PostRequest.dart';
 import 'home.dart';
+
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -20,8 +21,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<Widget> pages = [
     Home(),
-   NotificationScreen(),
-    Profile(),
+    NotificationScreen(),
+    PostRequest(),
     Profile(),
   ];
   int _currentindex = 0;
