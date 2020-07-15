@@ -1,7 +1,9 @@
 import 'package:e_blood/placeAutoComplete/PlaceAutocomplete.dart';
 import 'package:e_blood/screens/home/HomeScren.dart';
 import 'package:e_blood/screens/home/home.dart';
+import 'package:e_blood/screens/profile/profile.dart';
 import 'package:e_blood/service/auth.dart';
+import 'package:e_blood/service/database.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +13,7 @@ class SigninNumberForm extends StatefulWidget {
 }
 
 class _SigninNumberFormState extends State<SigninNumberForm> {
+  String phoneNo, phnCode = "+92";
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
@@ -22,8 +25,11 @@ class _SigninNumberFormState extends State<SigninNumberForm> {
             width: deviceSize.width * 0.75,
             //Number Text Field    N U M B E R  F I E L D
             child: TextFormField(
+              onChanged: (val) {
+                setState(() => phoneNo = phnCode + val);
+              },
               decoration: InputDecoration(
-                hintText: '301 2345678 ',
+                hintText: '3xx xxxxxxx ',
                 hintStyle: TextStyle(color: Colors.grey),
                 filled: true,
                 fillColor: Colors.white,
@@ -60,15 +66,10 @@ class _SigninNumberFormState extends State<SigninNumberForm> {
                   borderRadius: BorderRadius.circular(18.0),
                   side: BorderSide(color: Colors.red)),
               onPressed: () async {
-                dynamic result = await AuthService().signInAnom();
-                print(result);
-                if (result != null) {
-                  print(result);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Home()),
-                  );
-                }
+              
+                    await AuthService().signinWithPhone(phoneNo, context);
+                
+               
               },
               color: Colors.red,
               textColor: Colors.white,

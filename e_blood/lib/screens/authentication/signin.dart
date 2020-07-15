@@ -1,6 +1,4 @@
 import 'package:e_blood/screens/authentication/signinmethods/SigninNumberForm.dart';
-import 'package:e_blood/screens/home/home.dart';
-import 'package:e_blood/service/auth.dart';
 import 'package:flutter/gestures.dart';
 
 import 'package:flutter/material.dart';
