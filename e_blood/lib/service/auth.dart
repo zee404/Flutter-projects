@@ -1,6 +1,5 @@
 import 'package:e_blood/model/users.dart';
 import 'package:e_blood/screens/home/HomeScren.dart';
-import 'package:e_blood/screens/home/home.dart';
 import 'package:e_blood/screens/profile/profile.dart';
 import 'package:e_blood/service/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -10,29 +9,34 @@ class AuthService {
   final _codeControler = TextEditingController();
   FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseUser _user = null;
-  AuthResult newUserResult;
+  dynamic newUserResult;
+
   User _userFormFirebaseUser(FirebaseUser user) {
     return user != null ? User(uid: user.uid) : null;
   }
 
-// ---------------------------------------------
+  Stream<User> get user {
+    return _auth.onAuthStateChanged.map(_userFormFirebaseUser);
+  }
+
+// ---------------------------------------------##FBE5E7
   void onAuthenticate(String phoneNo, BuildContext context) async {
-    print("------------------- NewUserresult: " + newUserResult.user.toString());
+    print(
+        "------------------- NewUserresult: " + newUserResult.user.toString());
 
     if (newUserResult != null &&
-        await DatabaseService().checkUserID(newUserResult.user.toString()) ==
-            true) {
+        await DatabaseService().phoneNoExist(phoneNo) == true) {
       print("------------- BRAVO 6 GOING DARK");
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => Home(),
+          builder: (context) => HomeScreen(),
         ),
       );
     } else if (newUserResult != null &&
-        await DatabaseService().checkUserID(newUserResult.user.toString()) ==
-            false) {
-      DatabaseService(uid: newUserResult.user.toString()).updateUserData({
+        await DatabaseService().phoneNoExist(phoneNo) == false) {
+      DatabaseService(uid: newUserResult).updateUserData({
+        'userID': newUserResult,
         'userPhone': phoneNo,
       });
       print("--------------------- User data updated for uid: " +
@@ -53,17 +57,20 @@ class AuthService {
     try {
       _auth.verifyPhoneNumber(
           phoneNumber: phone,
-          timeout: Duration(seconds: 60),
+          timeout: Duration(seconds: 120),
 
           /// ---  ON SUCCESSFULL COMPLETE
           verificationCompleted: (AuthCredential crediential) async {
             newUserResult = await _auth.signInWithCredential(crediential);
 
-            FirebaseUser _user = newUserResult.user;
-            User(uid: _user.uid);
+            FirebaseUser user = newUserResult.user;
+            User(uid: user.uid);
 
             //print("verification completed function .user id is "+user.uid);
-            onAuthenticate(phone, context);
+            if (user != null) {
+              _userFormFirebaseUser(user);
+              onAuthenticate(phone, context);
+            }
           },
 
           /// ---  ON FAILED
@@ -116,7 +123,7 @@ class AuthService {
                             print("Phone authenticaiton result is null");
                           }
                         } catch (exception) {
-                          print('exception' + exception);
+                          print('exception' + exception.toString());
                           return null;
                         }
                       },
@@ -133,6 +140,8 @@ class AuthService {
     }
     return null;
   }
+
+// UPDATE value in the data base
 
   // sign in anom
   Future signInAnom() async {

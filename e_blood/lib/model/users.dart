@@ -5,7 +5,7 @@ class User {
 
 class UserData {
   String userID;
-  DateTime userDOB;
+  DateTime userAge;
   String userLocation;
   DateTime userLastDonation;
   String userBG;
@@ -15,7 +15,7 @@ class UserData {
   UserData({
     this.userID,
     this.userName,
-    this.userDOB,
+    this.userAge,
     this.userBG,
     this.userLastDonation,
     this.userLocation,
